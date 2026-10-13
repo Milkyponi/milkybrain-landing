@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tri Andika Cahyadi (Milky) | Gaming Content Producer & AI Workflow Architect</title>
+  <meta name="description" content="Portfolio of Tri Andika Cahyadi (Milky Poni) — Gaming Content Creator, Video Producer, Scriptwriter, and AI Workflow Architect with 6+ years of proven media production.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --surface: #10141e;
+      --surface-elevated: #161b29;
+      --border: #232a3d;
+      --border-highlight: #3b4563;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --success: #22c55e;
+      --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #38bdf8 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header / Nav */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 11, 16, 0.85);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .brand-logo svg {
+      width: 18px;
+      height: 18px;
+      fill: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-main);
+    }
+
+    .btn-contact-nav {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 7px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-contact-nav:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-highlight);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 40px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #c7d2fe;
+      margin-bottom: 20px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--success);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 840px;
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 20px var(--primary-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-elevated);
+      border-color: var(--border-highlight);
+    }
+
+    /* Bento Grid Layout */
+    .bento-section {
+      padding: 40px 0 80px;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Stats Grid */
+    .stats-bento {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-highlight);
+    }
+
+    .stat-num {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 6px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .stat-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Main Bento Grid */
+    .main-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .bento-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      position: relative;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .bento-card:hover {
+      border-color: var(--border-highlight);
+    }
+
+    .col-8 { grid-column: span 8; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-12 { grid-column: span 12; }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .bento-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .bento-desc {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Experience Timeline Cards */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exp-item {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-role {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .exp-bullets li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      position: relative;
+      padding-left: 18px;
+      line-height: 1.5;
+    }
+
+    .exp-bullets li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* Pipeline Architecture Box */
+    .pipeline-box {
+      background: #0d1019;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-top: 16px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .pipeline-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 0.86rem;
+    }
+
+    .pipeline-step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .step-text {
+      color: #cbd5e1;
+    }
+
+    .step-text strong {
+      color: #fff;
+    }
+
+    /* Sample Work Cards */
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .sample-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sample-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .sample-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .sample-quote {
+      background: rgba(0, 0, 0, 0.25);
+      border-left: 3px solid var(--primary);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.86rem;
+      color: #cbd5e1;
+      font-style: italic;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .sample-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      font-size: 0.8rem;
+    }
+
+    .badge-pill-sm {
+      background: rgba(99, 102, 241, 0.12);
+      color: #c7d2fe;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+
+    /* Tech Stack Badges */
+    .stack-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .stack-badge {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Contact Banner */
+    .contact-banner {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
+      border: 1px solid var(--border-highlight);
+      border-radius: 20px;
+      padding: 44px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .contact-banner h3 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .contact-banner p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 28px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .col-8, .col-4, .col-6 {
+        grid-column: span 12;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .bento-card {
+        padding: 22px;
+      }
+      .contact-banner {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="/" class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <span>Milky Brain</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/">Overview</a>
+        <a href="/#technology">Technology</a>
+        <a href="/portfolio" class="active" style="color: #fff; font-weight: 700;">Portfolio & Work</a>
+        <a href="mailto:founder@milkybrain.my.id" class="btn-contact-nav">Hire / Inquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        <span>Available for Strategic Contracts & YouTube Scripting</span>
+      </div>
+      <h1 class="hero-title">
+        Tri Andika Cahyadi <span class="gradient-text">(Milky)</span>
+      </h1>
+      <p class="hero-subtitle">
+        Gaming Content Producer, Scriptwriter, and AI Workflow Architect. Transforming deep gaming research and primary sources into high-retention video essays. Combining 6+ years of media production with autonomous multi-agent intelligence.
+      </p>
+
+      <div class="hero-actions">
+        <a href="mailto:founder@milkybrain.my.id" class="btn-primary">
+          Contact Founder & Producer <span>→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/tri-andika-cahyadi-4b730a1a7" target="_blank" class="btn-secondary">
+          LinkedIn Profile ↗
+        </a>
+        <a href="https://youtube.com/@milkyponi" target="_blank" class="btn-secondary">
+          YouTube @milkyponi ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bento Section -->
+  <section class="bento-section">
+    <div class="container">
+
+      <!-- Row 1: Executive Numbers at a Glance (The 5-Second Test) -->
+      <div class="section-header">
+        <h2>Executive Track Record</h2>
+        <p>Verified production pace, commercial sponsorships, and organic audience reach.</p>
+      </div>
+
+      <div class="stats-bento">
+        <div class="stat-card">
+          <div class="stat-num">6+ Yrs</div>
+          <div class="stat-label">Industry Tenure</div>
+          <div class="stat-desc">Active gaming media & video creation since 2018.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Videos Produced</div>
+          <div class="stat-desc">High-retention Shorts and long-form video essays.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">9 / Wk</div>
+          <div class="stat-label">Production Velocity</div>
+          <div class="stat-desc">Sustained contract pace at MMOPILOT (editing + script).</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">81K+</div>
+          <div class="stat-label">Peak Organic Reach</div>
+          <div class="stat-desc">Top-performing Short with zero paid ad spend.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">11 Deals</div>
+          <div class="stat-label">Game Sponsorships</div>
+          <div class="stat-desc">Commercial campaigns delivered for indie studios.</div>
+        </div>
+      </div>
+
+      <!-- Main Bento Grid -->
+      <div class="main-bento">
+
+        <!-- Card: Proven Experience -->
+        <div class="bento-card col-8">
+          <span class="card-tag">Professional Roles</span>
+          <h3 class="bento-title">Contract & Production Experience</h3>
+          <p class="bento-desc">Hands-on experience delivering fast-turnaround scripts, marketing videos, and fact-checked gaming analyses.</p>
+
+          <div class="exp-list">
+            <!-- GosuGamers -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">Content Writer & Game Researcher</span>
+                  <span class="exp-company"> · GosuGamers</span>
+                </div>
+                <span class="exp-period">Oct 2024 – Jan 2025</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Researched and drafted 42 detailed scripts covering <em>Honkai: Star Rail</em> and <em>Genshin Impact</em>.</li>
+                <li>Conducted rigorous primary-source fact-checking and community sentiment analysis prior to drafting.</li>
+                <li>Engineered hooks, narrative pacing, and retention structures trusted by global gaming media.</li>
+              </ul>
+            </div>
+
+            <!-- MMOPILOT -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">Content Producer / Video Editor / Scriptwriter</span>
+                  <span class="exp-company"> · MMOPILOT</span>
+                </div>
+                <span class="exp-period">Sep 2023 – Dec 2024</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>Delivered up to 9 marketing and gaming videos per week independently across DaVinci Resolve and CapCut.</li>
+                <li>Full post-production suite: multi-cam cuts, voiceover alignment, punch-in zooms, keyframe tracking, and SFX.</li>
+                <li>Adapted Indonesian scripts into English with AI voice-over localization for global MMO audiences.</li>
+              </ul>
+            </div>
+
+            <!-- MilkyPoni Independent -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <span class="exp-role">Independent Creator & Director</span>
+                  <span class="exp-company"> · MilkyPoni (@milkyponi)</span>
+                </div>
+                <span class="exp-period">2022 – Present</span>
+              </div>
+              <ul class="exp-bullets">
+                <li>End-to-end production of 14–15 gaming Shorts/month covering indie releases to major AAA titles.</li>
+                <li>Secured and fulfilled 11 commercial sponsorships with international indie game developers.</li>
+                <li>Achieved 81,000+ views organically through hook-first storytelling and pacing optimization.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: The Secret Weapon (Milky Brain Pipeline) -->
+        <div class="bento-card col-4">
+          <span class="card-tag">Proprietary Edge</span>
+          <h3 class="bento-title">The Milky Brain System</h3>
+          <p class="bento-desc">Why my scripts and research beat generic freelancers: I built an autonomous multi-agent operating engine to eliminate hallucinations and speed up turnaround.</p>
+
+          <div class="pipeline-box">
+            <div class="pipeline-step">
+              <span class="step-badge">Phase 01</span>
+              <div class="step-text"><strong>Primary-Source Radar:</strong> Scans developer notes, platform filings, and verified quotes. No forum hearsay.</div>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-badge">Phase 02</span>
+              <div class="step-text"><strong>Script Architecture:</strong> High-retention hook design + signature transition <em>("Gimana engga?...")</em>.</div>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-badge">Phase 03</span>
+              <div class="step-text"><strong>Autonomous QA Audit:</strong> Script Inspector flags unsupported claims before final human polish.</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; padding: 16px; background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.2); border-radius: 12px;">
+            <strong style="color: #fff; font-size: 0.9rem; display: block; margin-bottom: 4px;">Human-in-the-Loop Judgment</strong>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">AI handles the high-volume data extraction; I direct tone, comedic timing, audience psychology, and final approval.</p>
+          </div>
+        </div>
+
+        <!-- Card: Sample Works (Developer Wall + Top Shorts Showcase) -->
+        <div class="bento-card col-12">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+            <div>
+              <span class="card-tag">Social Proof & Featured Work</span>
+              <h3 class="bento-title" style="margin-bottom: 6px;">Trusted by Indie Developers & Publishers</h3>
+              <p class="bento-desc" style="margin-bottom: 0;">Direct review keys, playtest access, and sponsored launch campaigns delivered since 2024.</p>
+            </div>
+            <span style="font-size: 0.8rem; font-weight: 700; color: #22c55e; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.25); padding: 5px 12px; border-radius: 100px;">
+              ● 11+ Verified Creator Partnerships
+            </span>
+          </div>
+
+          <!-- Developer Collaboration Wall -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 36px;">
+            <!-- Alice Games -->
+            <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.95rem;">Alice Games</strong>
+                <span style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">Partner Studio</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+                <em>Shark Dentist</em> · <em>Dig, Dig, Die</em> · <em>Purrfect Keeper</em>
+              </div>
+            </div>
+
+            <!-- Blazing Fall Games -->
+            <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.95rem;">Blazing Fall Games</strong>
+                <span style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">Steam Access Key</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+                <em>Speechless</em> (Psychological Horror)
+              </div>
+            </div>
+
+            <!-- Aniq Tech -->
+            <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.95rem;">Aniq Tech</strong>
+                <span style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">Multi-Key Collab</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+                <em>Mix It!</em> (Arcade Color Shooter)
+              </div>
+            </div>
+
+            <!-- RetroStyle Games -->
+            <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.95rem;">RetroStyle Games</strong>
+                <span style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">Early Announcement</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+                <em>Flame and Blame</em> (Co-op Firefighter)
+              </div>
+            </div>
+
+            <!-- Thunderful & SOEDESCO -->
+            <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.95rem;">Thunderful & SOEDESCO</strong>
+                <span style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">Publisher Verified</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+                <em>ASKA</em> · <em>The 9th Charnel</em>
+              </div>
+            </div>
+
+            <!-- Tencent & iWorlds -->
+            <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px;">
+                <strong style="color: #fff; font-size: 0.95rem;">Tencent & iWorlds</strong>
+                <span style="font-size: 0.72rem; color: var(--accent); font-weight: 700;">Paid & Playtest</span>
+              </div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
+                <em>Dragonheir: Silent Gods</em> · <em>Dark Trip</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured High-Performing Shorts -->
+          <div style="border-top: 1px solid var(--border); padding-top: 30px;">
+            <div style="margin-bottom: 20px;">
+              <span class="card-tag" style="color: #a855f7; background: rgba(168, 85, 247, 0.1);">Audience Retention & Reach</span>
+              <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-bottom: 6px;">Featured High-Performing Shorts Showcase</h4>
+              <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">Real productions demonstrating hook-first scripting, DaVinci Resolve editing, and organic audience engagement.</p>
+            </div>
+
+            <div class="samples-grid">
+              <!-- Video 1 -->
+              <div class="sample-card">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span class="badge-pill-sm" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">🏆 Top Organic Reach</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Hoyoverse Project</span>
+                  </div>
+                  <h4 class="sample-title">"This Hoyo project seems promising..."</h4>
+                  <div style="display: flex; gap: 10px; font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
+                    <span style="color: #38bdf8;">🔥 81K Views</span>
+                    <span>·</span>
+                    <span style="color: #ec4899;">11K Likes</span>
+                    <span>·</span>
+                    <span style="color: #a855f7;">349 Comments</span>
+                  </div>
+                  <div class="sample-quote">
+                    "Hook-driven curation exploring leaked gameplay of Project Varsapura. Paced with high-energy visual cuts and punchy contextual subtitles."
+                  </div>
+                </div>
+                <div style="margin-top: 16px;">
+                  <a href="https://youtube.com/shorts/FBhrqJrrEcc" target="_blank" class="btn-secondary" style="width: 100%; justify-content: center; padding: 10px 16px; font-size: 0.88rem;">
+                    ▶ Watch on YouTube ↗
+                  </a>
+                </div>
+              </div>
+
+              <!-- Video 2 -->
+              <div class="sample-card">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span class="badge-pill-sm" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">🤝 Partner Showcase</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Alice Games</span>
+                  </div>
+                  <h4 class="sample-title">"Simulasi Jadi Dokter Hiu Seru Juga Nih..."</h4>
+                  <div style="display: flex; gap: 10px; font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
+                    <span style="color: #38bdf8;">🎮 Official Key Promo</span>
+                    <span>·</span>
+                    <span style="color: #a855f7;">Wishlist Callout</span>
+                  </div>
+                  <div class="sample-quote">
+                    "Live studio collaboration: transforming developer brief into high-tension narrative gameplay with signature 'Gimana enggak?...' transition."
+                  </div>
+                </div>
+                <div style="margin-top: 16px;">
+                  <a href="https://youtube.com/shorts/drw484j9r8o" target="_blank" class="btn-secondary" style="width: 100%; justify-content: center; padding: 10px 16px; font-size: 0.88rem;">
+                    ▶ Watch on YouTube ↗
+                  </a>
+                </div>
+              </div>
+
+              <!-- Video 3 -->
+              <div class="sample-card">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span class="badge-pill-sm" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">🧠 Deep Scripting</span>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Capcom Pragmata</span>
+                  </div>
+                  <h4 class="sample-title">"Bocil Ini Lebih Berguna daripada Ashley RE4..."</h4>
+                  <div style="display: flex; gap: 10px; font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
+                    <span style="color: #38bdf8;">📈 29.5K+ Views</span>
+                    <span>·</span>
+                    <span style="color: #ec4899;">3.5K Likes</span>
+                  </div>
+                  <div class="sample-quote">
+                    "Masterclass in contrastive hook engineering: subverting escort stereotypes with deep game mechanics and Capcom corporate strategy analysis."
+                  </div>
+                </div>
+                <div style="margin-top: 16px;">
+                  <a href="https://youtube.com/shorts/zQenAgVNA1g" target="_blank" class="btn-secondary" style="width: 100%; justify-content: center; padding: 10px 16px; font-size: 0.88rem;">
+                    ▶ Watch on YouTube ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Tooling & Tech Stack -->
+        <div class="bento-card col-12">
+          <span class="card-tag">Production Stack</span>
+          <h3 class="bento-title">Core Tooling & Production Hardware</h3>
+          <p class="bento-desc">Mastered toolset across video editing, broadcasting, and modern agentic engineering.</p>
+
+          <div class="stack-wrap">
+            <div class="stack-badge">🎬 DaVinci Resolve (Editing & Motion)</div>
+            <div class="stack-badge">✂️ CapCut (Fast-Paced Shorts)</div>
+            <div class="stack-badge">📡 OBS Studio & Streamlabs</div>
+            <div class="stack-badge">🎨 Adobe Photoshop & GIMP</div>
+            <div class="stack-badge">🤖 Hermes Multi-Agent Framework</div>
+            <div class="stack-badge">🔌 Model Context Protocol (MCP)</div>
+            <div class="stack-badge">⚡ Claude 3.5/3.7 & Gemini Pro</div>
+            <div class="stack-badge">🧠 Obsidian Vault Knowledge Base</div>
+            <div class="stack-badge">🐧 Fedora Linux Workstation</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Contact Banner -->
+      <div class="contact-banner">
+        <h3>Let's Build High-Retention Gaming Content</h3>
+        <p>Available for scriptwriting contracts, content strategy, video production, or bespoke AI research workflow consultation.</p>
+        <div class="contact-links">
+          <a href="mailto:founder@milkybrain.my.id" class="btn-primary">
+            Email: founder@milkybrain.my.id
+          </a>
+          <a href="https://www.linkedin.com/in/tri-andika-cahyadi-4b730a1a7" target="_blank" class="btn-secondary">
+            Connect on LinkedIn
+          </a>
+          <a href="https://youtube.com/@milkyponi" target="_blank" class="btn-secondary">
+            Visit YouTube Channel
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-flex">
+      <div>
+        <strong>Tri Andika Cahyadi</strong> · Milky Brain Platform
+      </div>
+      <div>
+        &copy; 2026 Milky Brain. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
