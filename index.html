@@ -50,13 +50,13 @@
 
     /* Navbar */
     header {
-      padding: 24px 0;
+      padding: 20px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(9, 11, 16, 0.75);
+      background: rgba(9, 11, 16, 0.85);
     }
 
     .nav-wrapper {
@@ -72,7 +72,7 @@
       text-decoration: none;
       color: #fff;
       font-weight: 800;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: -0.02em;
     }
 
@@ -96,7 +96,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 28px;
     }
 
     .nav-links a {
@@ -107,8 +107,9 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a.active {
       color: var(--text-main);
+      font-weight: 600;
     }
 
     .btn-contact {
@@ -549,9 +550,6 @@
       .container {
         padding: 0 20px;
       }
-      .nav-links {
-        gap: 20px;
-      }
     }
 
     @media (max-width: 768px) {
@@ -682,7 +680,7 @@
   <!-- Header -->
   <header>
     <div class="container nav-wrapper">
-      <a href="#" class="brand">
+      <a href="/" class="brand">
         <div class="brand-logo">
           <svg viewBox="0 0 24 24">
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
@@ -691,9 +689,10 @@
         <span>Milky Brain</span>
       </a>
       <nav class="nav-links" id="navLinks">
-        <a href="#features">Architecture</a>
-        <a href="#agents">Agent Teams</a>
-        <a href="#technology">Technology</a>
+        <a href="/" class="active">Overview</a>
+        <a href="/#features">Architecture</a>
+        <a href="/#agents">Agent Teams</a>
+        <a href="/#technology">Technology</a>
         <a href="/portfolio">Portfolio</a>
         <a href="mailto:founder@milkybrain.my.id" class="btn-contact">Contact Founder</a>
       </nav>
