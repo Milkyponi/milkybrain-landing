@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indonesian Localization for Steam &amp; itch.io | Milky Brain</title>
+  <meta name="description" content="English to Indonesian game localization for Steam and itch.io. Six engine families opened and repacked, tested inside the running build. Free audit in 48 hours.">
+  <meta name="theme-color" content="#090b10">
+  <link rel="canonical" href="https://milkybrain.my.id/localization/">
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Indonesian Localization for Steam &amp; itch.io | Milky Brain">
+  <meta property="og:description" content="Six engine families opened and repacked, tested inside the running build. Free audit in 48 hours.">
+  <meta property="og:url" content="https://milkybrain.my.id/localization/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --surface: #10141e;
+      --surface-elevated: #161b29;
+      --border: #232a3d;
+      --border-highlight: #3b4563;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #6366f1;
+      --primary-glow: rgba(99, 102, 241, 0.25);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.2);
+      --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #38bdf8 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a { color: inherit; }
+
+    /* Navbar */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 11, 16, 0.85);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .brand-logo svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .btn-contact {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .btn-contact:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--border-highlight);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 90px 0 70px;
+      text-align: center;
+      position: relative;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #c7d2fe;
+      margin-bottom: 28px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
+      flex: none;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.25rem, 5.4vw, 4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p.sub {
+      font-size: clamp(1.02rem, 1.8vw, 1.18rem);
+      color: var(--text-muted);
+      max-width: 660px;
+      margin: 0 auto 40px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 4px 25px var(--primary-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--surface-elevated);
+      border-color: var(--border-highlight);
+    }
+
+    .hero-note {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #7d8aa0;
+      margin-top: 22px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Market numbers */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 56px;
+      text-align: left;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-highlight);
+    }
+
+    .stat-num {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 4px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Sections */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-tinted {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-kicker {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #818cf8;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.75rem, 3.4vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* Proof */
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .proof-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .proof-card:hover {
+      border-color: var(--border-highlight);
+      transform: translateY(-3px);
+    }
+
+    .proof-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .proof-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.35;
+    }
+
+    .engine-tag {
+      flex: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.03em;
+      padding: 4px 9px;
+      border-radius: 100px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.28);
+      color: #c7d2fe;
+      white-space: nowrap;
+      max-width: 52%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .proof-studio {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #7d8aa0;
+      margin-bottom: 14px;
+    }
+
+    .proof-evidence {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      margin-top: auto;
+      overflow-wrap: break-word;
+    }
+
+    .proof-evidence strong {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .disclosure {
+      margin-top: 28px;
+      font-size: 0.82rem;
+      color: #7d8aa0;
+      text-align: center;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    @media (min-width: 1024px) {
+      .proof-grid { grid-template-columns: repeat(3, 1fr); }
+      .proof-card:last-child { grid-column: 2; }
+    }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-card.featured {
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.12), 0 20px 40px -24px rgba(99, 102, 241, 0.5);
+    }
+
+    .step-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      color: #818cf8;
+      margin-bottom: 14px;
+    }
+
+    .step-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .step-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .step-time {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #4ade80;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      border-radius: 100px;
+      padding: 3px 10px;
+      margin-bottom: 18px;
+      align-self: flex-start;
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .step-card p + p {
+      margin-top: 10px;
+    }
+
+    .scope-note {
+      margin-top: 26px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #7d8aa0;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.7;
+    }
+
+    /* Differentiators */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    .why-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .why-mark {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(56, 189, 248, 0.08);
+      border-radius: 6px;
+      padding: 2px 8px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .why-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .why-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    /* FAQ */
+    .faq-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item[open] {
+      border-color: var(--border-highlight);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 18px 22px;
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      min-height: 56px;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::marker { content: ""; }
+
+    .faq-item summary:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .faq-sign {
+      flex: none;
+      font-family: 'JetBrains Mono', monospace;
+      color: #818cf8;
+      font-weight: 500;
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: transform 0.2s;
+    }
+
+    .faq-item[open] .faq-sign {
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      padding: 0 22px 20px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      margin: 0 22px 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .faq-body a {
+      color: #7dd3fc;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(125, 211, 252, 0.3);
+    }
+
+    .faq-body a:hover { border-bottom-color: #7dd3fc; }
+
+    /* Closing CTA */
+    .cta-block {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      background: linear-gradient(160deg, rgba(99, 102, 241, 0.14), rgba(56, 189, 248, 0.06));
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 20px;
+      padding: 56px 32px;
+    }
+
+    .cta-block h2 {
+      font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .cta-block p {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      font-size: 1rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-fine {
+      margin-top: 26px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #7d8aa0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-main); }
+
+    /* Mobile toggle */
+    .mobile-toggle {
+      display: none;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      padding: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      z-index: 60;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-highlight);
+    }
+
+    .mobile-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .mobile-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .container { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 16px 0; }
+
+      .mobile-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 73px;
+        left: 0;
+        right: 0;
+        background: rgba(9, 11, 16, 0.97);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 20px;
+        gap: 16px;
+        display: none;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+      }
+
+      .nav-links.active {
+        display: flex;
+        animation: mobileNavIn 0.25s ease forwards;
+      }
+
+      @keyframes mobileNavIn {
+        from { opacity: 0; transform: translateY(-8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .nav-links a {
+        font-size: 1.05rem;
+        padding: 12px 16px;
+        border-radius: 8px;
+        color: #e2e8f0;
+      }
+
+      .nav-links a:hover { background: rgba(255, 255, 255, 0.05); }
+
+      .btn-contact {
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 1rem;
+        background: var(--gradient);
+        border: none;
+        box-shadow: 0 4px 20px var(--primary-glow);
+      }
+
+      .hero { padding: 48px 0 44px; }
+      .hero h1 { font-size: 2.05rem; margin-bottom: 18px; }
+      .hero p.sub { font-size: 1rem; margin-bottom: 30px; }
+      .hero-note { font-size: 0.72rem; }
+
+      .stats-grid {
+        margin-top: 40px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .stat-card { padding: 20px; }
+      .stat-num { font-size: 1.9rem; }
+
+      .section { padding: 56px 0; }
+      .section-title { margin-bottom: 32px; }
+      .section-title h2 { font-size: 1.55rem; }
+
+      .proof-grid, .steps, .why-grid { grid-template-columns: 1fr; gap: 12px; }
+      .proof-card, .step-card, .why-card { padding: 20px; }
+      .engine-tag { max-width: 46%; }
+
+      .cta-block { padding: 36px 20px; }
+      .cta-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+
+      .footer-wrapper { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="/" class="brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <span>Milky Brain</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/">Overview</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/localization" class="active">Localization</a>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=founder@milkybrain.my.id" target="_blank" rel="noopener noreferrer" class="btn-contact">Contact Founder</a>
+      </nav>
+      <button class="mobile-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 1. Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        EN &rarr; ID · 6 engine families
+      </div>
+      <h1><span class="gradient-text">Indonesian Localization</span> for Steam &amp; itch.io</h1>
+      <p class="sub">We unpack the build, translate inside the original container, repack, install, and play it. A job is finished when the text renders correctly in the running game, not when the file looks clean.</p>
+
+      <div class="hero-actions">
+        <a class="btn-primary" href="mailto:founder@milkybrain.my.id?subject=Free%20localization%20audit%20request">Request a free audit</a>
+      </div>
+      <p class="hero-note">48-hour turnaround · public build only · no NDA needed for the first pass</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">188,574</div>
+          <div class="stat-label">Games on Steam</div>
+          <div class="stat-desc">Every title counted through the Steam store API.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4.2%</div>
+          <div class="stat-label">Ship Indonesian</div>
+          <div class="stat-desc">7,920 of 188,574 games. Only 3.9% of demos.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">110M+</div>
+          <div class="stat-label">Players in Indonesia</div>
+          <div class="stat-desc">The largest game market in Southeast Asia.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Proof -->
+  <section class="section section-tinted" id="proof">
+    <div class="container">
+      <div class="section-title">
+        <div class="section-kicker">// Selected work</div>
+        <h2>Seven titles taken apart, translated, and put back together</h2>
+        <p>String counts below are real workspace numbers, not estimates.</p>
+      </div>
+
+      <div class="proof-grid">
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Hellraiser: Revival</div>
+            <span class="engine-tag">Unreal IoStore</span>
+          </div>
+          <div class="proof-studio">Saber Interactive</div>
+          <div class="proof-evidence"><strong>6,846 entries</strong> · <strong>57,646 words</strong> · IoStore v11 container, not the old .pak path.</div>
+        </article>
+
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Cyberpunk 2077</div>
+            <span class="engine-tag">REDengine</span>
+          </div>
+          <div class="proof-studio">CD Projekt Red</div>
+          <div class="proof-evidence"><strong>170 MB</strong> text workspace, installed natively in the game.</div>
+        </article>
+
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Hades &amp; Hades II</div>
+            <span class="engine-tag">Supergiant</span>
+          </div>
+          <div class="proof-studio">Supergiant Games</div>
+          <div class="proof-evidence"><strong>Two titles</strong>, one pipeline, same glossary carried across both releases.</div>
+        </article>
+
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Lies of P</div>
+            <span class="engine-tag">Unreal</span>
+          </div>
+          <div class="proof-studio">Round8 Studio</div>
+          <div class="proof-evidence"><strong>26 MB</strong> workspace, research pass first, then in-build test.</div>
+        </article>
+
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Metal Gear Rising: Revengeance</div>
+            <span class="engine-tag">PlatinumGames</span>
+          </div>
+          <div class="proof-studio">PlatinumGames</div>
+          <div class="proof-evidence"><strong>121 MB</strong> text workspace, in-house engine.</div>
+        </article>
+
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Danganronpa: Trigger Happy Havoc</div>
+            <span class="engine-tag">Unity</span>
+          </div>
+          <div class="proof-studio">Spike Chunsoft</div>
+          <div class="proof-evidence">Unity container opened, translated, and repacked for the live build.</div>
+        </article>
+
+        <article class="proof-card">
+          <div class="proof-top">
+            <div class="proof-title">Balatro</div>
+            <span class="engine-tag">LÖVE2D</span>
+          </div>
+          <div class="proof-studio">LocalThunk</div>
+          <div class="proof-evidence"><strong>150 Jokers</strong> · <strong>296 UI keys</strong> · zero-error test in Proton.</div>
+        </article>
+      </div>
+
+      <p class="disclosure">Every title above is independent localization work. The studios are named for attribution, not as clients — none of this was commissioned, paid for, or sold as a product. It is here because it shows what the work looks like when it is finished and running.</p>
+    </div>
+  </section>
+
+  <!-- 3. How it works -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-title">
+        <div class="section-kicker">// Process</div>
+        <h2>Start with a read, not a quote</h2>
+        <p>Three steps, each one you can stop at.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">STEP 01</div>
+          <h3>Free Audit</h3>
+          <div class="step-price">No charge</div>
+          <div class="step-time">48 hours</div>
+          <p>One to two pages built from the public build alone: how many strings your game carries, where Indonesian would overflow the interface, and which terms will read wrong in context.</p>
+          <p>No build access. No NDA. Just the store link.</p>
+        </div>
+
+        <div class="step-card featured">
+          <div class="step-num">STEP 02</div>
+          <h3>Demo Sprint</h3>
+          <div class="step-price">from $0.07 / word</div>
+          <div class="step-time">7 days</div>
+          <p>Up to 5,000 words — interface, dialogue, tooltips, item descriptions. Files arrive install-ready in the original format, with a glossary, one revision round, and screenshots from the running build as proof.</p>
+          <p>Minimum scope $250.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">STEP 03</div>
+          <h3>Full Game</h3>
+          <div class="step-price">from $0.06 / word</div>
+          <div class="step-time">14–21 days</div>
+          <p>Every string in the game, a complete glossary, LQA inside the build, and two revision rounds. Patch updates afterwards reuse the same glossary, so the second pass costs less.</p>
+          <p>Minimum scope $700.</p>
+        </div>
+      </div>
+
+      <p class="scope-note">Payment is 50% upfront, 50% on delivery. Voice acting, font and art work, and engine changes sit outside scope.</p>
+    </div>
+  </section>
+
+  <!-- 4. Differentiators -->
+  <section class="section section-tinted" id="why">
+    <div class="container">
+      <div class="section-title">
+        <div class="section-kicker">// Difference</div>
+        <h2>Three things a cheaper quote cannot show you</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-mark">01 / PROOF</span>
+          <h3>Tested in build, with screenshots</h3>
+          <p>Deliveries include captures from the running game at 1280&times;720 and 1920&times;1080. A translator who returns only a text file has never seen your UI break.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-mark">02 / MEMORY</span>
+          <h3>A glossary you keep</h3>
+          <p>Term decisions, rejected variants, and context notes ship with the files. Patch two costs less than patch one, because the vocabulary is already settled.</p>
+        </div>
+
+        <div class="why-card">
+          <span class="why-mark">03 / FORMAT</span>
+          <h3>Format is not a reason to decline</h3>
+          <p>Six engine families opened and repacked — Unreal IoStore, REDengine, Unity, LÖVE2D/LuaJIT, and the in-house engines behind PlatinumGames and Supergiant. We open an unfamiliar format before quoting, not after.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-title">
+        <div class="section-kicker">// Questions</div>
+        <h2>Before you send anything</h2>
+      </div>
+
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary>Is my engine supported?<span class="faq-sign" aria-hidden="true">+</span></summary>
+          <div class="faq-body">Probably. We have opened and repacked Unreal Engine (IoStore v11, not the old .pak drag-and-drop), REDengine, Unity, LÖVE2D/LuaJIT, and the in-house engines behind PlatinumGames and Supergiant titles. If yours is unfamiliar, we open the format and quote after that — format is never the reason we say no.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Which files should I send?<span class="faq-sign" aria-hidden="true">+</span></summary>
+          <div class="faq-body">For the audit: the store link and the public build, nothing else. For a sprint: the text container as it ships, or an exported string table if you already have one. If extracting it is the problem, that is part of the work — say so and we handle it.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long does it take?<span class="faq-sign" aria-hidden="true">+</span></summary>
+          <div class="faq-body">Audit in 48 hours. Demo Sprint in 7 days for up to 5,000 words. Full game in 14–21 days. The clock starts when the deposit lands, not when we agree on scope.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can you sign an NDA?<span class="faq-sign" aria-hidden="true">+</span></summary>
+          <div class="faq-body">Yes, before any file changes hands. The first audit does not need one, because it only reads the public build. Source access, unreleased builds, and marketing plans stay under NDA from the first message.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Closing CTA -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="cta-block">
+        <h2>Send the title and the store link</h2>
+        <p>Two working days later you get a written read on how Indonesian fits your game: string count, where the interface overflows, and which terms break in context.</p>
+        <div class="cta-actions">
+          <a class="btn-primary" href="mailto:founder@milkybrain.my.id?subject=Free%20localization%20audit%20request">Request a free audit</a>
+          <a class="btn-secondary" href="https://t.me/Milkyponi" target="_blank" rel="noopener noreferrer">Message on Telegram</a>
+        </div>
+        <p class="cta-fine">founder@milkybrain.my.id · t.me/Milkyponi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrapper">
+      <div>
+        <strong style="color: #fff;">Milky Brain</strong> &mdash; Autonomous Multi-Agent Operations
+      </div>
+      <div class="footer-links">
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=founder@milkybrain.my.id" target="_blank" rel="noopener noreferrer">founder@milkybrain.my.id</a>
+        <span>•</span>
+        <span>Jakarta / Global</span>
+      </div>
+      <div>
+        &copy; 2026 Milky Brain. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('navLinks');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('active');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggle.classList.remove('active');
+          nav.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
