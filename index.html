@@ -1,1683 +1,412 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft" data-ground="sky" data-buttons="solid" data-motion>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Milky Brain | Autonomous AI Multi-Agent Operations & Research Platform</title>
-  <meta name="description" content="Milky Brain is a next-generation autonomous multi-agent operating system empowering intelligence research, software engineering, and cognitive task orchestration.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #090b10;
-      --surface: #10141e;
-      --surface-elevated: #161b29;
-      --border: #232a3d;
-      --border-highlight: #3b4563;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --primary: #6366f1;
-      --primary-glow: rgba(99, 102, 241, 0.25);
-      --accent: #38bdf8;
-      --accent-glow: rgba(56, 189, 248, 0.2);
-      --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #38bdf8 100%);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.18) 0%, transparent 60%),
-        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
-    }
-
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* Navbar */
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(9, 11, 16, 0.85);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 800;
-      font-size: 1.2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      background: var(--gradient);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px var(--primary-glow);
-    }
-
-    .brand-logo svg {
-      width: 20px;
-      height: 20px;
-      fill: #fff;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--text-main);
-      font-weight: 600;
-    }
-
-    .btn-contact {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid var(--border);
-      color: #fff;
-      padding: 8px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.2s ease;
-    }
-
-    .btn-contact:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--border-highlight);
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 100px 0 80px;
-      text-align: center;
-      position: relative;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.25);
-      border-radius: 100px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #c7d2fe;
-      margin-bottom: 28px;
-    }
-
-    .pill-dot {
-      width: 8px;
-      height: 8px;
-      background: #38bdf8;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #38bdf8;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.25rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .gradient-text {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-      font-size: clamp(1.1rem, 2vw, 1.25rem);
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 40px;
-      font-weight: 400;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      box-shadow: 0 4px 25px var(--primary-glow);
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 30px rgba(99, 102, 241, 0.4);
-    }
-
-    .btn-secondary {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.2s;
-    }
-
-    .btn-secondary:hover {
-      background: var(--surface-elevated);
-      border-color: var(--border-highlight);
-    }
-
-    /* Architecture Preview Card */
-    .preview-card {
-      margin: 60px auto 0;
-      max-width: 980px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
-      text-align: left;
-    }
-
-    .card-header-bar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-    }
-
-    .dot-red { background: #ef4444; }
-    .dot-yellow { background: #eab308; }
-    .dot-green { background: #22c55e; }
-
-    .terminal-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-left: 8px;
-    }
-
-    .terminal-body {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      line-height: 1.7;
-    }
-
-    .log-line {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .log-tag {
-      color: #38bdf8;
-      font-weight: 600;
-    }
-
-    .log-agent {
-      color: #a855f7;
-      font-weight: 600;
-    }
-
-    .log-success {
-      color: #4ade80;
-    }
-
-    /* Grid Features */
-    .section {
-      padding: 90px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .section-title h2 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-    }
-
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-    }
-
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-highlight);
-    }
-
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(99, 102, 241, 0.12);
-      border: 1px solid rgba(99, 102, 241, 0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      color: #818cf8;
-      font-size: 1.5rem;
-    }
-
-    .feature-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    /* Multi-Agent Department Section */
-    .departments-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .dept-box {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-    }
-
-    .dept-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .dept-name {
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-
-    .dept-status {
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 6px;
-      background: rgba(74, 222, 128, 0.1);
-      color: #4ade80;
-      border: 1px solid rgba(74, 222, 128, 0.3);
-    }
-
-    .dept-desc {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-
-    /* Tech Stack & Grounding */
-    .stack-section {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    .stack-badges {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 28px;
-    }
-
-    .badge-pill {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #e2e8f0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Founder Note */
-    .founder-card {
-      background: linear-gradient(180deg, var(--surface) 0%, var(--surface-elevated) 100%);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 48px;
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .founder-card h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-
-    .founder-card p {
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      font-size: 1rem;
-    }
-
-    .founder-meta {
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .founder-role {
-      color: #818cf8;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Founder Actions & Socials */
-    .founder-actions {
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .founder-primary-btns {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .founder-primary-btns .btn-primary,
-    .founder-primary-btns .btn-whatsapp {
-      min-height: 46px;
-    }
-
-    .founder-social-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    /* Icon Buttons */
-    .btn-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 46px;
-      height: 46px;
-      border-radius: 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .btn-icon:hover {
-      background: var(--surface-elevated);
-      border-color: var(--border-highlight);
-      color: #fff;
-      box-shadow: 0 0 16px var(--primary-glow);
-    }
-
-    .btn-icon svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    /* WhatsApp Button */
-    .btn-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      background: rgba(37, 211, 102, 0.12);
-      border: 1px solid rgba(37, 211, 102, 0.35);
-      border-radius: 10px;
-      color: #25D366;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.92rem;
-      transition: all 0.2s ease;
-    }
-
-    .btn-whatsapp:hover {
-      background: rgba(37, 211, 102, 0.22);
-      border-color: rgba(37, 211, 102, 0.6);
-      box-shadow: 0 0 18px rgba(37, 211, 102, 0.2);
-      color: #25D366;
-    }
-
-    .btn-whatsapp svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
-
-    /* Hero Socials */
-    .hero-socials {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Footer */
-    footer {
-      padding: 60px 0 30px;
-      border-top: 1px solid var(--border);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .footer-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: #fff;
-    }
-
-    /* Mobile Hamburger Menu */
-    .mobile-toggle {
-      display: none;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      padding: 0;
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      z-index: 60;
-      transition: all 0.2s ease;
-    }
-
-    .mobile-toggle:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--border-highlight);
-    }
-
-    .mobile-toggle span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .mobile-toggle.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .mobile-toggle.active span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-
-    .mobile-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        padding: 0 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 16px 0;
-      }
-
-      .mobile-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 73px;
-        left: 0;
-        right: 0;
-        background: rgba(9, 11, 16, 0.97);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 24px 20px;
-        gap: 16px;
-        display: none;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
-      }
-
-      .nav-links.active {
-        display: flex;
-        animation: mobileNavIn 0.25s ease forwards;
-      }
-
-      @keyframes mobileNavIn {
-        from { opacity: 0; transform: translateY(-8px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      .nav-links a {
-        font-size: 1.05rem;
-        padding: 12px 16px;
-        border-radius: 8px;
-        color: #e2e8f0;
-      }
-
-      .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .btn-contact {
-        text-align: center;
-        padding: 14px 20px;
-        font-size: 1rem;
-        background: var(--gradient);
-        border: none;
-        box-shadow: 0 4px 20px var(--primary-glow);
-      }
-
-      .hero {
-        padding: 60px 0 40px;
-      }
-
-      .hero h1 {
-        font-size: 2.25rem;
-        margin-bottom: 18px;
-      }
-
-      .hero p {
-        font-size: 1rem;
-        margin-bottom: 28px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-      }
-
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 20px;
-        min-height: 48px;
-      }
-
-      .hero-socials {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        gap: 12px;
-        margin-top: 4px;
-      }
-
-      .btn-icon {
-        flex-shrink: 0;
-      }
-
-      .btn-whatsapp {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .founder-primary-btns {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-      }
-
-      .founder-primary-btns .btn-whatsapp,
-      .founder-primary-btns .btn-primary {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .founder-social-row {
-        width: 100%;
-        justify-content: center;
-        gap: 12px;
-      }
-
-      .preview-card {
-        padding: 16px;
-        margin-top: 40px;
-      }
-
-      .terminal-body {
-        font-size: 0.8rem;
-        line-height: 1.6;
-        overflow-x: auto;
-      }
-
-      .log-line {
-        white-space: pre-wrap;
-        word-break: break-word;
-      }
-
-      .section {
-        padding: 60px 0;
-      }
-
-      .section-title h2 {
-        font-size: 1.85rem;
-      }
-
-      .features-grid, .departments-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .founder-card {
-        padding: 28px 20px;
-      }
-
-      .footer-wrapper {
-        flex-direction: column;
-        text-align: center;
-        gap: 16px;
-      }
-    }
-
-    /* ==========================================================================
-       Interactive HUD Vertical Scroll Ruler & Scrubber (ArtCraft Inspired)
-       ========================================================================== */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    [id] {
-      scroll-margin-top: 90px;
-    }
-
-    /* Base HUD Ruler container (Desktop default >= 1024px) */
-    .hud-ruler {
-      position: fixed;
-      right: 22px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 90;
-      width: 154px;
-      height: clamp(380px, 64vh, 520px);
-      background: rgba(16, 20, 30, 0.82);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      border-radius: 12px;
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(56, 189, 248, 0.08);
-      display: flex;
-      flex-direction: column;
-      user-select: none;
-      transition: border-color 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .hud-ruler:hover {
-      border-color: rgba(56, 189, 248, 0.42);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.72), 0 0 25px rgba(56, 189, 248, 0.16);
-    }
-
-    /* Pulsing HUD LED */
-    .hud-led {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #38bdf8;
-      box-shadow: 0 0 8px #38bdf8;
-      animation: hudLedPulse 2.4s infinite ease-in-out;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-
-    @keyframes hudLedPulse {
-      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px #38bdf8; }
-      50% { opacity: 0.35; transform: scale(0.85); box-shadow: 0 0 3px #38bdf8; }
-    }
-
-    /* Desktop View */
-    .hud-desktop-view {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-      padding: 10px 10px 8px;
-    }
-
-    .hud-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5px;
-      letter-spacing: 0.12em;
-      color: #94a3b8;
-      font-weight: 500;
-    }
-
-    .hud-sys-tag {
-      color: #cbd5e1;
-    }
-
-    /* Track container */
-    .hud-track-container {
-      position: relative;
-      flex: 1;
-      margin: 10px 0;
-      cursor: pointer;
-      display: flex;
-    }
-
-    /* Navigation nodes list */
-    .hud-nodes {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: calc(100% - 22px);
-      height: 100%;
-      padding-right: 6px;
-    }
-
-    .hud-node {
-      background: none;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 6px;
-      padding: 3px 0;
-      color: #64748b;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8.5px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .hud-node:hover {
-      color: #e2e8f0;
-      transform: translateX(-2px);
-    }
-
-    .hud-node.active {
-      color: #38bdf8;
-      font-weight: 700;
-      text-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
-      transform: translateX(-3px);
-    }
-
-    .hud-node-label {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .hud-node-pip {
-      width: 4px;
-      height: 2px;
-      background: #334155;
-      border-radius: 1px;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .hud-node:hover .hud-node-pip {
-      background: #94a3b8;
-    }
-
-    .hud-node.active .hud-node-pip {
-      width: 8px;
-      height: 2px;
-      background: #38bdf8;
-      box-shadow: 0 0 8px #38bdf8;
-    }
-
-    /* Scale rail & ticks */
-    .hud-scale-rail {
-      position: absolute;
-      right: 2px;
-      top: 0;
-      bottom: 0;
-      width: 16px;
-      pointer-events: none;
-    }
-
-    .hud-rail-line {
-      position: absolute;
-      right: 2px;
-      top: 0;
-      bottom: 0;
-      width: 1.5px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 1px;
-    }
-
-    .hud-tick {
-      position: absolute;
-      right: 2px;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    .hud-tick.major {
-      width: 8px;
-      height: 1.5px;
-      background: rgba(56, 189, 248, 0.55);
-    }
-
-    .hud-tick.minor {
-      width: 4px;
-      height: 1px;
-      background: rgba(148, 163, 184, 0.25);
-    }
-
-    .hud-tick-lbl {
-      position: absolute;
-      right: 12px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 7.5px;
-      color: #475569;
-      letter-spacing: -0.02em;
-      font-weight: 500;
-    }
-
-    /* Scrubber needle & readout */
-    .hud-scrubber {
-      position: absolute;
-      right: 2px;
-      top: 0;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 5px;
-      pointer-events: none;
-      z-index: 10;
-      will-change: top;
-      transition: top 0.04s linear;
-    }
-
-    .hud-readout {
-      background: rgba(9, 11, 16, 0.95);
-      border: 1px solid rgba(56, 189, 248, 0.7);
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
-      border-radius: 3px;
-      padding: 1px 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      font-weight: 700;
-      color: #38bdf8;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
-    .hud-needle {
-      width: 14px;
-      height: 2px;
-      background: #38bdf8;
-      box-shadow: 0 0 8px #38bdf8, 0 0 14px rgba(56, 189, 248, 0.85);
-      border-radius: 1px;
-    }
-
-    /* Footer status */
-    .hud-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 6px;
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 8px;
-      color: #64748b;
-      font-weight: 500;
-    }
-
-    .hud-loc-val {
-      color: #38bdf8;
-      font-weight: 700;
-      text-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
-      max-width: 95px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    /* Mobile HUD (< 1024px) */
-    .hud-mobile-view {
-      display: none;
-    }
-
-    @media (max-width: 1023px) {
-      .hud-ruler {
-        top: 76px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 32px;
-        transform: none;
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        background: rgba(9, 11, 16, 0.94);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        padding: 0 16px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-        z-index: 45;
-      }
-
-      .hud-desktop-view {
-        display: none;
-      }
-
-      .hud-mobile-view {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: 100%;
-        gap: 12px;
-      }
-
-      .hud-mob-left {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        flex-shrink: 0;
-      }
-
-      .hud-mob-title {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 700;
-        color: #38bdf8;
-        letter-spacing: 0.06em;
-        text-shadow: 0 0 6px rgba(56, 189, 248, 0.4);
-        max-width: 120px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .hud-mob-track {
-        flex: 1;
-        height: 3px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
-        position: relative;
-        cursor: pointer;
-        overflow: visible;
-      }
-
-      .hud-mob-fill {
-        height: 100%;
-        width: 0%;
-        background: linear-gradient(90deg, #6366f1, #38bdf8);
-        box-shadow: 0 0 8px #38bdf8;
-        border-radius: 2px;
-        transition: width 0.04s linear;
-      }
-
-      .hud-mob-thumb {
-        position: absolute;
-        top: 50%;
-        left: 0%;
-        transform: translate(-50%, -50%);
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #38bdf8;
-        box-shadow: 0 0 8px #38bdf8;
-        pointer-events: none;
-        transition: left 0.04s linear;
-      }
-
-      .hud-mob-right {
-        flex-shrink: 0;
-      }
-
-      .hud-mob-pct {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 10px;
-        font-weight: 700;
-        color: #38bdf8;
-        letter-spacing: 0.04em;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hud-ruler {
-        top: 68px;
-      }
-      [id] {
-        scroll-margin-top: 105px;
-      }
-    }
-
-    @media (min-width: 1024px) and (max-width: 1380px) {
-      .container {
-        max-width: calc(100% - 200px);
-        margin-left: 32px;
-        margin-right: auto;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Milky Brain: Indonesian game localization for Steam and itch.io</title>
+<meta name="description" content="Milky Brain unpacks a game's build, translates inside the original container, repacks it and play-tests the running game. The free audit takes 48 hours and needs only the public build.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Milky Brain: Indonesian game localization for Steam and itch.io">
+<meta property="og:description" content="Unpack the build, translate inside the original container, repack, play-test. A free audit in 48 hours, on the public build.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://milkybrain.my.id/">
+<meta name="site-kind" content="software">
+<meta name="page-type" content="software">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wdth,wght@85..100,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/ui/base.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<link rel="stylesheet" href="assets/ui/checklist/fragment.css">
+<link rel="stylesheet" href="assets/ui/doc/fragment.css">
+<style>
+:root {
+  --p-bg: #000000; --p-surface: #0d0d0d; --p-ink: #ffffff; --p-muted: #999999;
+  --p-accent: #93f1f7; --p-accent-ink: #000000; --p-action: #93f1f7; --p-action-ink: #000000;
+  --p-inv-bg: #9ae187; --p-inv-surface: #8bcc7a; --p-inv-ink: #000000; --p-inv-muted: #24391e;
+  --p-inv-accent: #000000; --p-inv-accent-ink: #9ae187; --p-inv-action: #000000; --p-inv-action-ink: #9ae187;
+  --font-display: "IBM Plex Sans", system-ui, sans-serif;
+  --font-text: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --display-weight: 500;
+  --display-tracking: -0.025em;
+  --display-tracking-xl: -0.035em;
+  --ly-scale: 0.98;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<style>
+/* page CSS, all of it inside a visual (references/sections-library.md, "What every recipe assumes") */
+
+/* a row with a second line under its name */
+.rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); line-height: 1.45; margin-top: 2px; }
+
+/* the workspace window in the hero's lit frame (a drawn mock: role="img" on its host) */
+.d-win { width: 100%; display: grid; grid-template-rows: auto 1fr; background: #0e1013; color: #eceef0;
+  border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px rgb(255 255 255 / .1), 0 40px 70px -40px rgb(0 0 0 / .65);
+  font: 400 13px/1.35 var(--font-text); text-align: left; }
+.d-win__bar { display: flex; align-items: center; gap: 10px; height: 38px; padding: 0 12px; border-bottom: 1px solid rgb(255 255 255 / .09); color: #98a0a8; font-size: 12px; }
+.d-win__dots { display: flex; gap: 5px; flex: none; }
+.d-win__dots i { width: 8px; height: 8px; border-radius: 50%; background: rgb(255 255 255 / .18); }
+.d-win__bar b { color: #eceef0; font-weight: 500; }
+.d-win__bar .sp { flex: 1; }
+.d-win__body { display: grid; grid-template-columns: 232px minmax(0, 1fr); min-height: 240px; align-content: start; }
+.d-list { border-right: 1px solid rgb(255 255 255 / .08); padding: 8px; display: grid; align-content: start; gap: 1px; }
+.d-list__head { padding: 4px 8px 6px; font-size: 12px; color: #8b929a; }
+.d-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1px 10px; padding: 7px 8px; border-radius: 8px; }
+.d-row.is-on { background: rgb(255 255 255 / .07); }
+.d-row b { font-weight: 500; color: #eceef0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.d-row span { grid-column: 1 / -1; color: #8b929a; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.d-row time { color: #98a0a8; font-size: 12px; font-variant-numeric: tabular-nums; }
+.d-open { padding: 12px 16px 14px; display: grid; align-content: start; gap: 8px; min-width: 0; }
+.d-open__head { display: flex; align-items: baseline; gap: 10px; color: #98a0a8; font-size: 12px; }
+.d-open__head b { color: #eceef0; font-weight: 500; font-size: 13px; }
+.d-open__head span:last-child { margin-left: auto; font-variant-numeric: tabular-nums; }
+.d-str { display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: center; gap: 10px; padding: 7px 8px; border-radius: 8px; background: rgb(255 255 255 / .045); }
+.d-str i { font: 500 11px/1 var(--font-mono); font-style: normal; color: #98a0a8; letter-spacing: .04em; }
+.d-str b { font-weight: 400; color: #eceef0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.d-str.is-target { background: rgb(255 255 255 / .07); box-shadow: inset 2px 0 0 var(--accent); }
+.d-note { margin: 0; color: #8f979f; font-size: 12px; }
+.d-acts { display: flex; gap: 8px; margin-top: 2px; }
+.d-acts span { height: 28px; padding: 0 12px; display: inline-flex; align-items: center; border-radius: 99px; font-size: 12px; font-weight: 500; background: #93f1f7; color: #04181a; }
+.d-acts span + span { background: rgb(255 255 255 / .09); color: #eceef0; }
+/* the window runs past the frame's foot, cut by the mask (x.ai's hero); on a tablet it fills the frame */
+.hero--centred .hero__window > .ly-piece { bottom: -40px; }
+@media (max-width: 639px) {
+  .d-win__body { grid-template-columns: minmax(0, 1fr); min-height: 200px; }
+  .d-list { display: none; }
+  .d-open { padding: 10px 12px; }
+  .d-win__bar .sp ~ span { display: none; }
+}
+
+/* the drawn panels inside the moment's frames */
+.d-sheet { width: 100%; max-width: 330px; background: #0e1013; color: #eceef0; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / .1), 0 30px 50px -34px rgb(0 0 0 / .6); font: 400 13px/1.35 var(--font-text); }
+.d-sheet__head { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid rgb(255 255 255 / .09); font-weight: 500; }
+.d-sheet__head em { margin-left: auto; font-style: normal; font-size: 12px; font-weight: 400; color: #8f979f; }
+.d-sheet__row { display: flex; align-items: baseline; gap: 10px; padding: 8px 12px; border-top: 1px solid rgb(255 255 255 / .06); }
+.d-sheet__row:first-of-type { border-top: 0; }
+.d-sheet__row b { font-weight: 400; color: #eceef0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.d-sheet__row em { margin-left: auto; font-style: normal; font-size: 12px; color: #8f979f; white-space: nowrap; }
+.d-sheet__foot { padding: 8px 12px; border-top: 1px solid rgb(255 255 255 / .09); font-size: 12px; color: #8f979f; }
+#open .mo-pc__visual--lit { aspect-ratio: 4 / 3; max-height: 34svh; }
+@media (max-width: 639px) { #open .mo-pc__visual--lit { aspect-ratio: 16 / 9; } }
+
+/* the two lit frames hold the checklist and the delivery document; their surface is a drawn mock, so it
+   carries role="img" with a label, and the UI on it is dark: its ink is the page's light ink */
+#audit .frame, #record .frame { --ratio: 80%; }
+#audit .stage, #record .stage { --fx-bg: #0e1013; --fx-surface: #171a1e; --fx-ink: #f1f3f5; --fx-muted: #9aa2aa;
+  --fx-accent: #93f1f7; --fx-accent-ink: #04181a; }
+@media (max-width: 1023px) { #audit .frame, #record .frame { --ratio: 62%; margin-top: var(--s-6); } }
+
+/* the focus ring on the hero's lit frame is a dark ring (a pale ring on pale blue is 1.5:1), and the
+   effect's pause disc takes the lit frame's own colours so the ring reads against both */
+.hero .hero__window, #audit .frame, #record .frame { --action: #0b0e11; --action-ink: #ffffff; }
+.hero .hero__window .loop-pause { background: #f2f5f8; color: #0b0e11; border-color: rgb(0 0 0 / .18); }
+
+/* the close: the name hand-set to fit the wrap, and the button on the split line, not 12px off it */
+.close__word { font-size: clamp(44px, 16vw, 180px); line-height: 1.04; }
+@media (min-width: 1024px) {
+  #contact .close--word .section-head--split { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--s-5); align-items: end; }
+  #contact .close--word .section-head--split > div { grid-column: 1 / span 7; }
+  #contact .close--word .section-head--split > .btn { grid-column: 9 / -1; justify-content: center; }
+}
+
+/* the phone: the nav's button lives in the sheet, so the bar keeps the logo and the menu button on the lines;
+   each section fills its screens (a step panel is taller, the prices' frame shorter) so the gaps between
+   one section's content and the next stay even, and the seven rows stack */
+@media (max-width: 639px) {
+  .nav:not(.is-open) .nav__actions { display: none; }
+  .nav:not(.is-open) .nav__actions + .nav__toggle { margin-left: auto; }
+  #record { --hm: 2; }
+  main > section#open:not(.is-live) { min-height: 200svh; }
+  #open .mo-pc__visual--lit { aspect-ratio: .95; }
+  #audit .frame { --ratio: 40%; }
+  #record .frame { --ratio: 86%; }
+  #audit .rows > li, #record .rows > li { grid-template-columns: minmax(0, 1fr); }
+  #audit .rows__value, #record .rows__value { grid-column: 1; grid-row: 2; text-align: left; }
+  #contact .footer__lede { display: none; }
+  #questions .ic-row:nth-child(n + 3) { display: none; }
+}
+</style>
 </head>
 <body>
+<!-- type: software | palette candy-on-black | type pairing plex | hero centred | nav-centre, footer-columns,
+     close-word, rhythm space, buttons solid, mark stack | effect grain-gradient (the hero's lit frame) |
+     moment pinned-chapters (#open). Screens: hero, the pipeline (2), the audit, the record (2), questions, close. -->
 
-  <!-- Header -->
-  <header>
-    <div class="container nav-wrapper">
-      <a href="/" class="brand">
-        <div class="brand-logo">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
-        </div>
-        <span>Milky Brain</span>
-      </a>
-      <nav class="nav-links" id="navLinks">
-        <a href="/" class="active">Overview</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/localization">Localization</a>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=founder@milkybrain.my.id" target="_blank" rel="noopener noreferrer" class="btn-contact">Contact Founder</a>
-      </nav>
-      <button class="mobile-toggle" id="menuToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+<header class="nav nav--centre">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Milky Brain</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="/">Overview</a></div>
+      <div class="nav__item"><a class="nav__link" href="/portfolio/">Portfolio</a></div>
+      <div class="nav__item"><a class="nav__link" href="/localization/">Localization</a></div>
+      <div class="nav__item"><a class="nav__link" href="mailto:founder@milkybrain.my.id">Contact</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="/localization/">Request a localization audit</a>
     </div>
-  </header>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="overview">
-    <div class="container">
-      <div class="pill">
-        <span class="pill-dot"></span>
-        <span>Powered by Frontier Multi-Model Routing &amp; MCP</span>
-      </div>
-      <h1>
-        Next-Generation Autonomous <span class="gradient-text">Multi-Agent</span> Engine
-      </h1>
-      <p>
-        Milky Brain orchestrates high-throughput autonomous agents for deep intelligence gathering, structured knowledge synthesis, and automated code operations.
-      </p>
-      <div class="hero-actions">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=founder@milkybrain.my.id" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          Get in Touch <span>→</span>
-        </a>
-        <a href="#architecture" class="btn-secondary">
-          Explore Architecture
-        </a>
-        <div class="hero-socials">
-          <a href="https://t.me/Milkyponi" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="Telegram" title="Telegram @Milkyponi">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/company/143986138" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="LinkedIn" title="LinkedIn Organization">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://youtube.com/@milkyponi" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="YouTube" title="YouTube @milkyponi">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <a href="https://github.com/Milkyponi" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="GitHub" title="GitHub @Milkyponi">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          </a>
+<main id="top">
+  <section class="hero hero--centred" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__c">
+        <p class="pill"><span>Steam and itch.io</span></p>
+        <h1 id="hero-h">Indonesian game localization</h1>
+        <p class="hero__lead">We unpack the build, translate inside the original container, repack it, then play-test the running game. The first read is free and takes 48 hours.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="/localization/">Request a localization audit</a>
+          <a class="btn btn--secondary" href="#record">See the seven titles</a>
         </div>
       </div>
-
-      <!-- Live Terminal Simulation Preview -->
-      <div class="preview-card">
-        <div class="card-header-bar">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-          <span class="terminal-title">milky-orchestrator :: live-dispatch-kernel</span>
+      <div class="hero__window" data-fx="grain-gradient" data-fx-seed="7" data-fx-params='{"speed":0,"grainMotion":0,"softness":0.5}' role="img" aria-label="The Milky Brain workspace: four games in the job list, and one settings string read in Indonesian with its glossary term and a screen-size check">
+        <div class="ly-piece d-win" aria-hidden="true">
+          <div class="d-win__bar"><span class="d-win__dots"><i></i><i></i><i></i></span><span><b>Milky Brain</b> · Localization</span><span class="sp"></span><span>Hellraiser: Revival · IoStore v11</span></div>
+          <div class="d-win__body">
+            <div class="d-list">
+              <div class="d-list__head">In the workspace</div>
+              <div class="d-row is-on"><b>Hellraiser: Revival</b><time>6,846</time><span>Saber Interactive · Unreal IoStore</span></div>
+              <div class="d-row"><b>Cyberpunk 2077</b><time>170 MB</time><span>CD Projekt Red · REDengine</span></div>
+              <div class="d-row"><b>Hades &amp; Hades II</b><time>2 titles</time><span>Supergiant Games · one glossary</span></div>
+              <div class="d-row"><b>Lies of P</b><time>26 MB</time><span>Round8 Studio · Unreal</span></div>
+            </div>
+            <div class="d-open">
+              <div class="d-open__head"><b>UI · settings</b><span>glossary locked</span><span>6 of 6,846</span></div>
+              <div class="d-str"><i>EN</i><b>Difficulty</b></div>
+              <div class="d-str is-target"><i>ID</i><b>Tingkat kesulitan</b></div>
+              <p class="d-note">Checked at 1280×720 and 1920×1080, in the running build.</p>
+              <div class="d-acts"><span>Approve</span><span>Next string</span></div>
+            </div>
+          </div>
         </div>
-        <div class="terminal-body">
-          <div class="log-line">
-            <span class="log-tag">[INIT]</span>
-            <span>Booting Milky Brain multi-agent runtime environment (v2.4)</span>
-          </div>
-          <div class="log-line">
-            <span class="log-agent">[AGENT: ORCHESTRATOR]</span>
-            <span>Analyzing research vectors across 14 frontier sources...</span>
-          </div>
-          <div class="log-line">
-            <span class="log-agent">[AGENT: RESEARCH]</span>
-            <span>Synthesized 48 empirical citations with verified origin graphs</span>
-          </div>
-          <div class="log-line">
-            <span class="log-agent">[AGENT: DEV-SPECIALIST]</span>
-            <span>Executing automated test suite: 18/18 checks passed</span>
-          </div>
-          <div class="log-line">
-            <span class="log-success">[STATUS]</span>
-            <span>Continuous learning bridge synchronized to durable memory vault</span>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- pinned-chapters (references/moments.md): the section is the host, two screens tall; the three steps open one
+       at a time while the shared frame on the split line changes to each step's panel -->
+  <section class="section" id="open" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="open-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="open-h">How a build gets opened</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Unpack the container</h3>
+            <p>Unreal IoStore v11, REDengine, Unity, LÖVE2D or a studio's own engine. The build opens where it ships.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit" role="img" aria-label="The game's content folder opened in place: 6,846 entries read, nothing exported">
+              <div class="d-sheet" aria-hidden="true">
+                <div class="d-sheet__head">Hellraiser: Revival <em>IoStore v11</em></div>
+                <div class="d-sheet__row"><b>Game/Content/Localization/en</b><em>opened</em></div>
+                <div class="d-sheet__row"><b>6,846 entries</b><em>read</em></div>
+                <div class="d-sheet__row"><b>No export</b><em>no re-import</em></div>
+              </div>
+            </figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Translate every string</h3>
+            <p>Dialogue, interface, tooltips, item text. One glossary fixes one word for one thing before the first string is written.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit" role="img" aria-label="Two interface strings in Indonesian beside the glossary term that fixes the wording">
+              <div class="d-sheet" aria-hidden="true">
+                <div class="d-sheet__head">Glossary <em>locked</em></div>
+                <div class="d-sheet__row"><b>Difficulty</b><em>Tingkat kesulitan</em></div>
+                <div class="d-sheet__row"><b>New game</b><em>Mulai baru</em></div>
+                <div class="d-sheet__foot">Hades &amp; Hades II: one glossary, both games.</div>
+              </div>
+            </figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Repack the build</h3>
+            <p>The files go back into the original container and install natively. We play the running game and send captures at 1280×720 and 1920×1080.</p>
+            <figure class="mo-pc__visual mo-pc__visual--lit" role="img" aria-label="The final pass: installed natively, the menu read at 1280 by 720, captures sent with the files">
+              <div class="d-sheet" aria-hidden="true">
+                <div class="d-sheet__head">Final pass <em>Proton</em></div>
+                <div class="d-sheet__row"><b>Installed natively</b><em>done</em></div>
+                <div class="d-sheet__row"><b>Menu at 1280×720</b><em>read</em></div>
+                <div class="d-sheet__row"><b>Captures</b><em>sent</em></div>
+              </div>
+            </figure>
+          </li>
+        </ol>
+        <p><a class="link" href="/localization/">Read the whole process</a></p>
+      </div>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
+
+  <section class="section" id="audit" aria-labelledby="audit-h">
+    <div class="wrap grid grid--top">
+      <div class="span-5">
+        <div class="section-head">
+          <h2 id="audit-h">A free audit of the public build</h2>
+          <p>Two pages, no charge: how many strings your game carries, where Indonesian overflows, which terms break in context. 4.2% of Steam's 188,574 games ship Indonesian.</p>
+        </div>
+        <ul class="rows">
+          <li><span class="rows__name">Free audit<small>Two pages, from the public build</small></span><span class="rows__value">48 hours</span></li>
+          <li><span class="rows__name">Demo sprint<small>5,000 words, 7 days, one revision, from $250.</small></span><span class="rows__value">$0.07 / word</span></li>
+          <li><span class="rows__name">Full game<small>Every string, LQA in the build, two revisions, from $700.</small></span><span class="rows__value">$0.06 / word</span></li>
+        </ul>
+        <p><a class="link" href="/localization/">Read the whole process</a></p>
+      </div>
+      <div class="frame frame--split frame--lit span-6 start-7" role="img" aria-label="The free audit as a four-step checklist: count the strings, mark what overflows at 1280 by 720, list the terms that break, send two pages back">
+        <div class="stage stage--fade-b">
+          <div class="at-rise fit" style="--fit-max:340px;--ax:max(24px, 50% - 170px);--ay:44px;--ay-sm:16px" data-ui-loop>
+            <div class="ui ui-panel ui-checks" data-ui="checklist">
+              <div class="ui-checks__head">
+                <div class="ui-title">The audit, in 48 hours</div>
+                <span class="ui-spacer"></span>
+                <div class="ui-meta" data-checks-count>2 of 4</div>
+              </div>
+              <div class="ui-checks__bar"><i data-checks-bar style="--k:0.5"></i></div>
+              <ul class="ui-checks__list">
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Count the strings in the container</span></li>
+                <li class="ui-check is-done"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Mark what overflows at 1280×720</span></li>
+                <li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">List the terms that break in context</span></li>
+                <li class="ui-check"><span class="ui-check__box"><svg viewBox="0 0 16 16"><path d="m4.5 8.2 2.3 2.3 4.7-5"/></svg></span><span class="ui-check__label">Send two pages back</span></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Technology Stack Bar -->
-  <section class="stack-section" id="technology">
-    <div class="container">
-      <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 700;">
-        Built for Modern Frontier AI Workflows
-      </span>
-      <div class="stack-badges">
-        <div class="badge-pill">⚡ Frontier Multi-Model Routing</div>
-        <div class="badge-pill">🔌 Model Context Protocol (MCP)</div>
-        <div class="badge-pill">🧠 Obsidian Long-Term Vault</div>
-        <div class="badge-pill">🛡️ Grounded Primary Citations</div>
-        <div class="badge-pill">🚀 Subagent Parallelism</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Core Features / Architecture -->
-  <section class="section" id="architecture">
-    <a id="features"></a>
-    <div class="container">
-      <div class="section-title">
-        <h2>Designed for Autonomous Intelligence</h2>
-        <p>Combining rigorous primary-source verification with dynamic task delegation across specialized subagents.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🧩</div>
-          <h3>Multi-Agent Orchestration</h3>
-          <p>Decentralized dynamic subagents execute parallel reasoning workstreams without context dilution, returning verifiable deliverables.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔍</div>
-          <h3>Primary Source Grounding</h3>
-          <p>Strict distinction between verified facts, analysis, and assertions. Comprehensive automated auditing prevents synthetic hallucination.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">💾</div>
-          <h3>Durable Cognitive Memory</h3>
-          <p>Persistent hybrid memory architecture combining high-speed context injection with long-term knowledge graphs and evolving skill files.</p>
+  <section class="section g2" id="record" aria-labelledby="record-h">
+    <div class="wrap">
+      <div class="group">
+        <div class="grid grid--top">
+          <div class="span-5">
+            <div class="section-head">
+              <h2 id="record-h">Seven games in the workspace</h2>
+              <p>Every one was opened, translated and put back together; none was commissioned, and the studios are named for attribution. The desk is one person, Tri Andika Cahyadi: six years of gaming media since 2018, 500+ videos, 11 sponsorships. The agents do the volume; he sets the tone and approves the final pass.</p>
+            </div>
+            <p><a class="link" href="/portfolio/">See the production portfolio</a></p>
+          </div>
+          <div class="frame frame--split frame--lit span-6 start-7" role="img" aria-label="The delivery document for Hellraiser: Revival: 6,846 strings in the IoStore v11 container, one glossary, captures from the running build, and a note that nothing was exported and re-imported">
+            <div class="stage stage--fade-b">
+              <div class="at-rise to-edge" style="--ax:max(24px, 50% - 220px);--ay:44px;--ay-sm:16px">
+                <div class="ui ui-doc" data-ui="doc">
+                  <article class="ui-doc__page">
+                    <div class="ui-doc__label">Delivery, Hellraiser: Revival</div>
+                    <div class="ui-doc__title">What ships with the files</div>
+                    <div class="ui-doc__text">6,846 strings translated inside the IoStore v11 container, 57,646 words. The build installs natively.</div>
+                    <div class="ui-doc__text"><mark class="ui-doc__mark is-on">One glossary</mark> for the whole game, fixed before the first string was written.</div>
+                    <div class="ui-doc__text">Captures from the running game at 1280×720 and 1920×1080 go out with the files.</div>
+                    <div class="ui-doc__text">Patch two reuses the glossary, so the second pass costs less.</div>
+                  </article>
+                  <aside class="ui-doc__note ui-panel is-on" aria-live="polite">
+                    <div class="ui-doc__kind"><span class="ui-doc__dot"></span><span data-doc-kind>Format</span></div>
+                    <div class="ui-doc__msg" data-doc-msg>Nothing was exported and re-imported; the files went back where they came from.</div>
+                    <div class="ui-doc__where" data-doc-where>IoStore v11, not the old .pak path</div>
+                  </aside>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Standing Agent Departments -->
-  <section class="section" id="agents" style="background: rgba(255,255,255,0.01);">
-    <div class="container">
-      <div class="section-title">
-        <h2>Specialized Agent Fleet</h2>
-        <p>Capability-based departments operating cooperatively under central executive orchestration.</p>
-      </div>
-
-      <div class="departments-grid">
-        <div class="dept-box">
-          <div class="dept-header">
-            <span class="dept-name">Executive Orchestrator</span>
-            <span class="dept-status">ACTIVE</span>
-          </div>
-          <p class="dept-desc">Coordinates high-level goal breakdown, system-level task delegation, and cross-department quality control.</p>
-        </div>
-        <div class="dept-box">
-          <div class="dept-header">
-            <span class="dept-name">Content & Radar</span>
-            <span class="dept-status">ACTIVE</span>
-          </div>
-          <p class="dept-desc">Continuous monitoring of industry releases, media intelligence, and comprehensive script drafting pipelines.</p>
-        </div>
-        <div class="dept-box">
-          <div class="dept-header">
-            <span class="dept-name">Software Engineering</span>
-            <span class="dept-status">ACTIVE</span>
-          </div>
-          <p class="dept-desc">Automated full-stack architecture, refactoring, test-driven validation, and headless testbed executions.</p>
-        </div>
-        <div class="dept-box">
-          <div class="dept-header">
-            <span class="dept-name">Quality Assurance & Audit</span>
-            <span class="dept-status">ACTIVE</span>
-          </div>
-          <p class="dept-desc">Fact verification, inspection reports, vulnerability scans, and cognitive hallucination mitigation.</p>
+      <div class="grid">
+        <div class="span-12">
+          <p class="t-label">Title · engine · workspace</p>
+          <ul class="rows">
+            <li><span class="rows__name">Hellraiser: Revival<small>Saber Interactive · Unreal IoStore v11</small></span><span class="rows__value">57,646 words</span></li>
+            <li><span class="rows__name">Cyberpunk 2077<small>CD Projekt Red · REDengine · installed natively</small></span><span class="rows__value">170 MB</span></li>
+            <li><span class="rows__name">Hades &amp; Hades II<small>Supergiant Games · one pipeline, one glossary</small></span><span class="rows__value">2 titles</span></li>
+            <li><span class="rows__name">Lies of P<small>Round8 Studio · Unreal · research pass first</small></span><span class="rows__value">26 MB</span></li>
+            <li><span class="rows__name">Metal Gear Rising: Revengeance<small>PlatinumGames · in-house engine</small></span><span class="rows__value">121 MB</span></li>
+            <li><span class="rows__name">Danganronpa: Trigger Happy Havoc<small>Spike Chunsoft · Unity container, repacked</small></span><span class="rows__value">Unity</span></li>
+            <li><span class="rows__name">Balatro<small>LocalThunk · LÖVE2D · zero-error test in Proton</small></span><span class="rows__value">296 UI keys</span></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Company / Mission Section -->
-  <section class="section" id="mission">
-    <div class="container">
-      <div class="founder-card">
-        <h3>Independent & Bootstrapped AI Innovation</h3>
-        <p>
-          Milky Brain is developed by independent researchers and software engineers pushing the frontier of autonomous agent workflows, context synthesis, and agentic desktop integration.
-        </p>
-        <div class="founder-meta">Tri Andika Cahyadi (Milky Poni)</div>
-        <div class="founder-role">Founder & Chief Architect</div>
-        <div class="founder-actions" id="contact">
-          <!-- Main Action Buttons -->
-          <div class="founder-primary-btns">
-            <!-- WhatsApp -->
-            <a href="https://wa.me/6285183321618" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-              WhatsApp: 0851-8332-1618
-            </a>
-            <!-- Direct Gmail Compose Button -->
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=founder@milkybrain.my.id" target="_blank" rel="noopener noreferrer" class="btn-primary">
-              ✉ Email Founder
-            </a>
-          </div>
-          <!-- Social Row -->
-          <div class="founder-social-row">
-            <!-- Telegram -->
-            <a href="https://t.me/Milkyponi" target="_blank" rel="noopener noreferrer" class="btn-icon" title="Telegram @Milkyponi" aria-label="Telegram">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            </a>
-            <!-- LinkedIn -->
-            <a href="https://www.linkedin.com/company/143986138" target="_blank" rel="noopener noreferrer" class="btn-icon" title="LinkedIn Organization" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <!-- YouTube -->
-            <a href="https://youtube.com/@milkyponi" target="_blank" rel="noopener noreferrer" class="btn-icon" title="YouTube @milkyponi" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
-            <!-- GitHub -->
-            <a href="https://github.com/Milkyponi" target="_blank" rel="noopener noreferrer" class="btn-icon" title="GitHub @Milkyponi" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            </a>
-          </div>
+  <section class="section" id="questions" aria-labelledby="questions-h">
+    <div class="wrap grid grid--top">
+      <div class="span-5">
+        <div class="section-head">
+          <h2 id="questions-h">Questions before you send anything</h2>
+          <p>Anything else goes to the founder's inbox.</p>
+        </div>
+        <p><a class="link" href="mailto:founder@milkybrain.my.id">Email the founder</a></p>
+        <ul class="ic-list">
+          <li class="ic-row"><span class="ic-row__main"><span class="ic-row__title">Steam</span><span class="ic-row__meta">Store page, public build</span></span><img class="ic ic-28 ic-ink" src="assets/icons/steam.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></li>
+          <li class="ic-row"><span class="ic-row__main"><span class="ic-row__title">itch.io</span><span class="ic-row__meta">Build and page</span></span><img class="ic ic-28" src="assets/icons/itch-io.svg" alt="" width="28" height="25" loading="lazy" decoding="async"></li>
+          <li class="ic-row"><span class="ic-row__main"><span class="ic-row__title">Unreal Engine</span><span class="ic-row__meta">IoStore v11, opened in place</span></span><img class="ic ic-28 ic-ink" src="assets/icons/unrealengine.svg" alt="" width="28" height="28" loading="lazy" decoding="async"></li>
+          <li class="ic-row"><span class="ic-row__main"><span class="ic-row__title">Unity</span><span class="ic-row__meta">Container repacked</span></span><img class="ic ic-28 ic-ink" src="assets/icons/unity.svg" alt="" width="27" height="28" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+      <div class="faq span-6 start-7">
+        <div class="faq__item">
+          <h3>Which game engines can you open?</h3>
+          <p>Unreal Engine, IoStore v11 included; REDengine; Unity; LÖVE2D/LuaJIT; and the in-house engines behind PlatinumGames and Supergiant titles. An unfamiliar format is opened before we quote.</p>
+        </div>
+        <div class="faq__item">
+          <h3>Which build do I send?</h3>
+          <p>The store link and the public build. Nothing else.</p>
+        </div>
+        <div class="faq__item">
+          <h3>Do you sign an NDA for a build?</h3>
+          <p>Yes, before any file changes hands. The first audit does not need one: it only reads the build everyone can download.</p>
+        </div>
+        <div class="faq__item">
+          <h3>Who translates the strings?</h3>
+          <p>An agent system built in-house does the volume. One person sets the glossary, reads every string in context and signs off the final pass.</p>
         </div>
       </div>
     </div>
   </section>
+</main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-wrapper">
-      <div>
-        <strong style="color: #fff;">Milky Brain</strong> — Autonomous Multi-Agent Operations
+<footer class="footer closing" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--word">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Request a localization audit</h2><p class="t-lead">Free, 48 hours, on the public build. Two pages come back.</p></div>
+        <a class="btn btn--primary btn--xl" href="/localization/">Request a localization audit<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
       </div>
-      <div class="footer-links">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=founder@milkybrain.my.id" target="_blank" rel="noopener noreferrer">founder@milkybrain.my.id</a>
-        <span>•</span>
-        <span>Jakarta / Global</span>
-      </div>
-      <div>
-        &copy; 2026 Milky Brain. All rights reserved.
-      </div>
+      <p class="close__word" aria-hidden="true">Milky Brain</p>
     </div>
-  </footer>
-
-  <script>
-    const toggle = document.getElementById('menuToggle');
-    const nav = document.getElementById('navLinks');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav.classList.toggle('active');
-      });
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          toggle.classList.remove('active');
-          nav.classList.remove('active');
-        });
-      });
-    }
-  </script>
-
-  <!-- Interactive ArtCraft-style HUD Vertical Scroll Ruler & Telemetry Scrubber -->
-  <aside class="hud-ruler" id="hudRuler" aria-label="Interactive HUD Scroll Scrubber">
-    <!-- Desktop View (>= 1024px) -->
-    <div class="hud-desktop-view">
-      <div class="hud-header">
-        <span class="hud-led"></span>
-        <span class="hud-sys-tag">NAV // V2.4</span>
-      </div>
-
-      <div class="hud-track-container" id="hudTrackContainer" title="Click anywhere to scrub">
-        <!-- Technical Scale Rail with Major/Minor Ticks -->
-        <div class="hud-scale-rail" id="hudScaleRail">
-          <div class="hud-rail-line"></div>
-          <div class="hud-tick major" style="top: 0%"><span class="hud-tick-lbl">00</span></div>
-          <div class="hud-tick minor" style="top: 10%"></div>
-          <div class="hud-tick minor" style="top: 20%"></div>
-          <div class="hud-tick major" style="top: 25%"><span class="hud-tick-lbl">25</span></div>
-          <div class="hud-tick minor" style="top: 35%"></div>
-          <div class="hud-tick minor" style="top: 45%"></div>
-          <div class="hud-tick major" style="top: 50%"><span class="hud-tick-lbl">50</span></div>
-          <div class="hud-tick minor" style="top: 60%"></div>
-          <div class="hud-tick minor" style="top: 70%"></div>
-          <div class="hud-tick major" style="top: 75%"><span class="hud-tick-lbl">75</span></div>
-          <div class="hud-tick minor" style="top: 85%"></div>
-          <div class="hud-tick minor" style="top: 92%"></div>
-          <div class="hud-tick major" style="top: 100%"><span class="hud-tick-lbl">100</span></div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <p class="footer__lede">Indonesian localization and gaming content, from Jakarta.</p>
         </div>
-
-        <!-- Cyan Neon Active Scrubber & 3-Digit Monospace Readout -->
-        <div class="hud-scrubber" id="hudScrubber">
-          <div class="hud-readout" id="hudReadout">000%</div>
-          <div class="hud-needle"></div>
-        </div>
-
-        <!-- Section Navigation Nodes -->
-        <nav class="hud-nodes" id="hudNodes" aria-label="Section shortcuts">
-          <button class="hud-node active" data-target="overview" type="button" aria-label="Scroll to Overview">
-            <span class="hud-node-label">OVERVIEW</span>
-            <span class="hud-node-pip"></span>
-          </button>
-          <button class="hud-node" data-target="technology" type="button" aria-label="Scroll to Technology">
-            <span class="hud-node-label">TECHNOLOGY</span>
-            <span class="hud-node-pip"></span>
-          </button>
-          <button class="hud-node" data-target="architecture" type="button" aria-label="Scroll to Architecture">
-            <span class="hud-node-label">ARCHITECTURE</span>
-            <span class="hud-node-pip"></span>
-          </button>
-          <button class="hud-node" data-target="agents" type="button" aria-label="Scroll to Agent Fleet">
-            <span class="hud-node-label">AGENT FLEET</span>
-            <span class="hud-node-pip"></span>
-          </button>
-          <button class="hud-node" data-target="mission" type="button" aria-label="Scroll to Mission">
-            <span class="hud-node-label">MISSION</span>
-            <span class="hud-node-pip"></span>
-          </button>
-          <button class="hud-node" data-target="contact" type="button" aria-label="Scroll to Contact">
-            <span class="hud-node-label">CONTACT</span>
-            <span class="hud-node-pip"></span>
-          </button>
-        </nav>
+        <div class="span-2 footer__col"><h3>Overview</h3><ul><li><a href="#record">Seven titles</a></li><li><a href="#audit">The audit</a></li><li><a href="#questions">Questions</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Portfolio</h3><ul><li><a href="/portfolio/">Gaming content</a></li><li><a href="/portfolio/">Track record</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Localization</h3><ul><li><a href="/localization/">The process</a></li><li><a href="/localization/">Request an audit</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Contact</h3><ul><li><a href="mailto:founder@milkybrain.my.id">Email the founder</a></li><li><a href="https://wa.me/6285183321618">WhatsApp</a></li></ul></div>
       </div>
-
-      <div class="hud-footer">
-        <span>LOC //</span>
-        <span class="hud-loc-val" id="hudActiveLabel">OVERVIEW</span>
+      <div class="footer__legal">
+        <span>&copy; 2026 Milky Brain. All rights reserved. Product names and logos are trademarks of their owners.</span>
+        <div class="socials"></div>
       </div>
     </div>
+  </div>
+</footer>
 
-    <!-- Mobile HUD View (< 1024px) -->
-    <div class="hud-mobile-view">
-      <div class="hud-mob-left">
-        <span class="hud-led"></span>
-        <span class="hud-mob-title" id="hudMobileTitle">OVERVIEW</span>
-      </div>
-      <div class="hud-mob-track" id="hudMobileTrack" title="Tap to scrub">
-        <div class="hud-mob-fill" id="hudMobileFill"></div>
-        <div class="hud-mob-thumb" id="hudMobileThumb"></div>
-      </div>
-      <div class="hud-mob-right">
-        <span class="hud-mob-pct" id="hudMobilePct">000%</span>
-      </div>
-    </div>
-  </aside>
-
-  <!-- HUD Controller Script -->
-  <script>
-    (function initHUD() {
-      const nodes = Array.from(document.querySelectorAll('.hud-node'));
-      const sections = nodes.map(btn => {
-        const id = btn.getAttribute('data-target');
-        const el = document.getElementById(id);
-        const label = btn.querySelector('.hud-node-label') ? btn.querySelector('.hud-node-label').textContent.trim() : id.toUpperCase();
-        return { id, el, btn, label };
-      }).filter(s => s.el !== null);
-
-      const scrubber = document.getElementById('hudScrubber');
-      const readout = document.getElementById('hudReadout');
-      const trackContainer = document.getElementById('hudTrackContainer');
-      const activeLabel = document.getElementById('hudActiveLabel');
-
-      const mobTitle = document.getElementById('hudMobileTitle');
-      const mobFill = document.getElementById('hudMobileFill');
-      const mobThumb = document.getElementById('hudMobileThumb');
-      const mobPct = document.getElementById('hudMobilePct');
-      const mobTrack = document.getElementById('hudMobileTrack');
-
-      function updateHUD() {
-        const docEl = document.documentElement;
-        const scrollTop = window.pageYOffset || docEl.scrollTop || 0;
-        const maxScroll = Math.max(1, docEl.scrollHeight - window.innerHeight);
-        const pct = Math.min(100, Math.max(0, (scrollTop / maxScroll) * 100));
-        const pctFormatted = String(Math.round(pct)).padStart(3, '0') + '%';
-
-        // Desktop Scrubber position
-        if (trackContainer && scrubber && readout) {
-          const trackHeight = trackContainer.clientHeight;
-          scrubber.style.top = (pct / 100 * trackHeight) + 'px';
-          readout.textContent = pctFormatted;
-        }
-
-        // Mobile Scrubber bar
-        if (mobFill && mobThumb && mobPct) {
-          mobFill.style.width = pct + '%';
-          mobThumb.style.left = pct + '%';
-          mobPct.textContent = pctFormatted;
-        }
-
-        // Active Section detection
-        let activeSec = sections[0];
-        if (pct >= 98.5 && sections.length > 0) {
-          activeSec = sections[sections.length - 1];
-        } else {
-          const trigger = window.innerHeight * 0.35;
-          for (let i = 0; i < sections.length; i++) {
-            const rect = sections[i].el.getBoundingClientRect();
-            if (rect.top <= trigger) {
-              activeSec = sections[i];
-            }
-          }
-        }
-
-        if (activeSec) {
-          sections.forEach(s => {
-            if (s.id === activeSec.id) {
-              s.btn.classList.add('active');
-            } else {
-              s.btn.classList.remove('active');
-            }
-          });
-          if (activeLabel) activeLabel.textContent = activeSec.label;
-          if (mobTitle) mobTitle.textContent = activeSec.label;
-        }
-      }
-
-      // Smooth scroll click handler for desktop nodes
-      sections.forEach(s => {
-        s.btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          s.el.scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-
-      // Track click scrubbing for desktop
-      if (trackContainer) {
-        trackContainer.addEventListener('click', (e) => {
-          if (e.target.closest('.hud-node')) return;
-          const rect = trackContainer.getBoundingClientRect();
-          const ratio = Math.min(1, Math.max(0, (e.clientY - rect.top) / rect.height));
-          const docEl = document.documentElement;
-          const targetScroll = ratio * (docEl.scrollHeight - window.innerHeight);
-          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-        });
-      }
-
-      // Mobile track scrubbing
-      if (mobTrack) {
-        mobTrack.addEventListener('click', (e) => {
-          const rect = mobTrack.getBoundingClientRect();
-          const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
-          const docEl = document.documentElement;
-          const targetScroll = ratio * (docEl.scrollHeight - window.innerHeight);
-          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
-        });
-      }
-
-      // Mobile title click jumps to next section
-      if (mobTitle) {
-        mobTitle.style.cursor = 'pointer';
-        mobTitle.addEventListener('click', () => {
-          const activeIdx = sections.findIndex(s => s.btn.classList.contains('active'));
-          const nextIdx = (activeIdx + 1) % sections.length;
-          if (sections[nextIdx]) {
-            sections[nextIdx].el.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-
-      let ticking = false;
-      function requestHUDUpdate() {
-        if (!ticking) {
-          requestAnimationFrame(() => {
-            updateHUD();
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }
-
-      window.addEventListener('scroll', requestHUDUpdate, { passive: true });
-      window.addEventListener('resize', requestHUDUpdate, { passive: true });
-      requestHUDUpdate();
-    })();
-  </script>
-
-
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
 </body>
 </html>
