@@ -144,11 +144,16 @@
   /* a phone stacks every row list: the value takes its own line, on the column's left edge */
   #formats .rows > li, #record .rows > li { grid-template-columns: minmax(0, 1fr); }
   #formats .rows__value, #record .rows__value { grid-column: 1; grid-row: 2; text-align: left; }
-  .d-win__body { grid-template-columns: minmax(0, 1fr); min-height: 186px; }
+  .d-win__body { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .d-side { display: none; }
-  .d-main { padding: 10px 12px; }
+  .d-main { padding: 10px 12px 12px; gap: 6px; }
   .d-row { grid-template-columns: minmax(0, 1fr); }
   .d-row em { display: none; }
+  /* a phone keeps one game plus the string pair: the ID line is the point of the mock, never cut */
+  .d-row:nth-child(n + 2) { display: none; }
+  .d-win__bar { height: 32px; }
+  .d-str { padding: 4px 8px; }
+  .d-main__head h4 { font-size: 12px; }
   .d-row:nth-child(n + 3) { display: none; }
   /* the phone keeps the frame tall enough to count as the section's visual, and close under the list */
   #record .frame { --ratio: 88%; margin-top: var(--s-5); }
